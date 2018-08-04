@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node //declaring node structure format
+struct node //declaring structure format
 {
 	int data;
 	struct node *link;
@@ -24,6 +24,7 @@ void add_node_queue(int data){
 	while(rear->link!='\0'){
 		rear = rear->link;
 	}
+
 	t->data = data;
 	rear->link = t;
 	rear = t;
@@ -44,9 +45,6 @@ void print_queue(struct node *t){
 	}
 }
 
-
-
-
 int main(){
 
 	front = create_queue(5);
@@ -56,11 +54,11 @@ int main(){
 	add_node_queue(20);
 	add_node_queue(30);
 	add_node_queue(40);
-    print_queue(front);
+	print_queue(front);
 
-    remove_node_from_queue(front);
-    remove_node_from_queue(front);
-    print_queue(front);
+	remove_node_from_queue(front);
+	remove_node_from_queue(front);
+	print_queue(front);
 	return 0;
 
 }
