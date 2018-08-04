@@ -1,0 +1,33 @@
+
+
+That probably is an issue to do with the ISA proxy setup in your organization. I had the same issue when configuring a virtual server for my organization.
+
+Open the terminal. In the terminal type in the following command:
+
+sudo nano /etc/apt/apt.conf
+
+This command is meant to open up the apt.conf file and make it available for configuration. If you are prompted for your password, enter it.
+
+Add the following lines into the file:
+
+Acquire::http::proxy "http://[username]:[password]@[proxy_address]:[port]";
+Acquire::https::proxy "https:// [username]:[password]@[proxy_address]:[port]";
+Acquire::ftp::proxy "ftp:// [username]:[password]@[proxy_address]:[port]";
+Acquire::socks::proxy "[username]:[password]@[proxy_address]:[port]";
+
+Where: username - Your proxy username password - Your proxy password proxy_address - The address of the proxy server port - The port on the address server through which traffic is allowed
+
+Save the apt.conf file. Try and run the apt-get command and it should give you something similar to this
+
+sudo apt-get install [package]
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following extra packages will be installed:
+………
+Do you want to continue? [Y/n] y:
+
+If you see this response, that means that the package is ready to install.
+
+------------------------------------------------------------------------
+
