@@ -53,28 +53,17 @@ void search_node(NODE *head){
 
 }
 
-// void remove_given_nodevalue_from_linkllist(struct *head, int value){
-// 	struct *t = head;
 
-// 	if (t != '\0'){
-// 		while(t->link->data != value){
-// 			t = t->link;
-// 		}
+void delete_last_node_from_linklist(NODE * head){
+	NODE *t = head;
+	while(t->link->link != '\0'){
+		t = t->link;
+	}
 
-// 		if (t->link->link != '\0'){
-// 			struct *k = t->link;
-// 			t->link = t->link->link;
-// 			//free(k);
-// 		}
+	t->link='\0';
+}
 
-// 		//else{//operation to delete node if it's a last node in linklist
-// 			//remove_last_node_linklist(struct *head);
-// 		//}
-// 	}
-// }
 	
-
-
 
 void print_linklist(NODE *head){
 	struct node *t = head;
@@ -88,6 +77,11 @@ void print_linklist(NODE *head){
 void main(){
 	head = create_linklist();
 	print_linklist(head);
+
+	add_node_to_linklist(head);
+	add_node_to_linklist(head);
 	search_node(head);
+	delete_last_node_from_linklist(head);
+	print_linklist(head);
 
 }
