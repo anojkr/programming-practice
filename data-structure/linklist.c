@@ -6,33 +6,35 @@ typedef struct node{
 	struct node *link;
 }NODE;
 
-NODE *head;
+NODE * head = '\0';
 
-NODE * create_linklist(){
-	int value;
-	printf("\nEnter a value of node to inserted in linklist\n");
-	scanf("%d", &value);
-	struct node *head = (struct node *)malloc(sizeof(struct node));
-	head->data =  value;
-	head->link = '\0';
-	printf("\nLinklist is created\n");
-	return head;
-}
 
-void add_node_to_linklist(NODE *head){
-	int value;
+NODE * add_node_to_linklist(){
+	
 	NODE *t = head;
 	NODE *p = (NODE*)malloc(sizeof(NODE));
-	while(t->link !='\0'){
+	int data;	
+	printf("\nEnter a value of node to inserted in linklist\n");
+	scanf("%d", &data);
+
+	if(t == '\0'){
+		p -> data = data;
+		p -> link = '\0';
+		head = p;
+		return head;
+	
+	}
+	
+	while(t -> link != '\0'){
 		t = t->link;
 	}
-	printf("\nEnter a value of node to inserted in linklist\n");
-	scanf("%d", &value);
-	t->link = p;
-	p->data = value;
-	p->link = '\0';
-}
+	
+	p -> data=data;
+	p -> link = '\0';
+	t -> link = p; 
+	return head;
 
+}
 
 void search_node(NODE *head){
 	int i=0;
@@ -47,12 +49,10 @@ void search_node(NODE *head){
 			return;
 		}
 		t=t->link;
-		
 	}
 	printf("\n %d not exits in linklist\n",value);
 
 }
-
 
 void delete_last_node_from_linklist(NODE * head){
 	NODE *t = head;
@@ -63,8 +63,6 @@ void delete_last_node_from_linklist(NODE * head){
 	t->link='\0';
 }
 
-	
-
 void print_linklist(NODE *head){
 	struct node *t = head;
 	printf("\nItems in linklist are as follows -\n");
@@ -74,14 +72,19 @@ void print_linklist(NODE *head){
 	}
 }
 
-void main(){
-	head = create_linklist();
-	print_linklist(head);
+void create_linklist(int items){
+	for(int i=0 ; i< items ; i++){
+		 add_node_to_linklist();
+	}
+}
 
-	add_node_to_linklist(head);
-	add_node_to_linklist(head);
-	search_node(head);
-	delete_last_node_from_linklist(head);
+void main(){
+	int items;
+	printf("\n Enter numbers of items to be inserted in linklist \n");
+	scanf("%d", &items);
+	create_linklist(items);
+	//search_node(head);
+	//delete_last_node_from_linklist(head);
 	print_linklist(head);
 
 }
