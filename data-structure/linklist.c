@@ -8,7 +8,7 @@ typedef struct node{
 
 NODE * head = '\0';
 
-
+//function to node add to linklist
 NODE * add_node_to_linklist(){
 	
 	NODE *t = head;
@@ -36,6 +36,7 @@ NODE * add_node_to_linklist(){
 
 }
 
+//function to search for item exist or not in linklist
 void search_node(NODE *head){
 	int i=0;
 	int value;
@@ -54,6 +55,8 @@ void search_node(NODE *head){
 
 }
 
+
+//function to delete last node from linklist
 void delete_last_node_from_linklist(NODE * head){
 	NODE *t = head;
 	while(t->link->link != '\0'){
@@ -63,6 +66,7 @@ void delete_last_node_from_linklist(NODE * head){
 	t->link='\0';
 }
 
+//function to print linklist
 void print_linklist(NODE *head){
 	struct node *t = head;
 	printf("\nItems in linklist are as follows -\n");
@@ -72,6 +76,7 @@ void print_linklist(NODE *head){
 	}
 }
 
+//create a linklist with set of elements
 void create_linklist(int items){
 	for(int i=0 ; i< items ; i++){
 		 add_node_to_linklist();
