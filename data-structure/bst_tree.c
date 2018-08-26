@@ -14,7 +14,6 @@ NODE * create_root_node(int value){
 	r->data = value;
 	r->left = '\0';
 	r->right= '\0';
-
 	return r;
 }
 
