@@ -37,7 +37,7 @@ struct node {
 };
 
 
-int insert_element( struct node *p){
+int push_back( struct node *p){
 
 	int index = p -> size;	
 
@@ -105,7 +105,7 @@ void main(){
 
 	for ( int i = 1 ; i <= 2*n; i++ ){
 
-		int t = insert_element(&dynamic_table);
+		int t = push_back(&dynamic_table);
 		if ( t != 0 ){
 			print_dynamic_table(&dynamic_table);
 		}
@@ -113,7 +113,9 @@ void main(){
 			dynamic_table_resize(&dynamic_table);
 
 		}
-
+		if ( dynamic_table.size == n){
+			break;
+		}
 	}
 
 }
