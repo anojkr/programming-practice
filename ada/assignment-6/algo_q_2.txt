@@ -1,0 +1,30 @@
+Algorithm
+
+Reverse both linked lists
+Make a linked list of maximum result size (m + n + 1)
+For each node of one list
+  For each node of second list
+   a) Multiply nodes
+   b) Add digit in result LL at corresponding 
+      position
+   c) Now resultant node itself can be higher
+      than one digit
+   d) Make carry for next node
+  Leave one last column means next time start
+From next node in result list
+Reverse the resulted linked list
+Algorithm
+
+Reverse both linked lists
+Make a linked list of maximum result size (m + n + 1)
+For each node of one list
+  For each node of second list
+   a) Multiply nodes
+   b) Add digit in result LL at corresponding 
+      position
+   c) Now resultant node itself can be higher
+      than one digit
+   d) Make carry for next node
+  Leave one last column means next time start
+From next node in result list
+Reverse the resulted linked list
