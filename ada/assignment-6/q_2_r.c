@@ -6,14 +6,6 @@ struct Node {
 	struct Node* next;
 };
 
-struct Node* newNode(int data)
-{
-	struct Node* new_node =
-		(struct Node*)malloc(sizeof(struct Node));
-	new_node->data = data;
-	new_node->next = NULL;
-	return new_node;
-}
 
 struct Node * getnode(){
 	struct Node * t = (struct Node *)malloc(sizeof(struct Node));
@@ -26,63 +18,81 @@ void add_node( struct Node ** head, int item ){
 	if ( *head == NULL ){
 	
 		struct Node *k =  getnode();
-		k -> data = item;
-		k -> next = NULL;
 		*head = k;
+		k -> data = item;
+		k -> next = *head;
 
 	} else {
 	
 		struct Node *t = *head;
-		while ( t -> next != NULL ){
+		while ( t -> next != *head ){
 			t = t-> next;
 		}
 		struct Node *newnode = getnode();
-		newnode -> data = item;
-		newnode -> next = NULL;
 		t -> next = newnode;
+		newnode -> data = item;
+		newnode -> next = *head;
 
 	}
 
+}
+
+int count(struct Node * head){
+	int c=0;
+	struct Node *t = head;
+	while (t -> next != head){
+		t = t-> next;
+		c++;
+	}
+	return c+1;
 }
 
 long multint(struct Node * first, struct Node * second)
 {
     int num1 = 0, num2 = 0;
+    struct Node *f = first;
+    struct Node *s = second;
 
-    // Generate numbers from linked lists
-    while (first || second)
-    {
-        if (first)
-        {
-            num1 = num1*10 + first->data;
-            first = first->next;
-        }
-        
-        if (second)
-        {
-            num2 = num2*10 + second->data;
-            second = second->next;
-        }
+    int c_1 = count(f);
+    int c_2 = count(s);
+
+   // printf("fisrst count %d", c_1); 
+   // printf("second count %d", c_2);
+
+
+    for(int i=0; i<c_1; i++){
+    	    num1 = num1*10 + f->data;
+            f = f->next;
+ 
     }
 
-    // Return multiplication of
-    // two numbers
+    printf("%d\n", num1);
+
+
+    for(int i=0; i<c_2; i++){
+    	    num2 = num2*10 + s->data;
+            s = s->next;
+ 
+    }
+
+
+    printf("%d", num2);
+    printf("\nNOW result = %d \n", num1*num2);
     return num1*num2;
 }
 
-// A utility function to print a linked list
-void printList(struct Node* Node)
-{
-	while (Node != NULL) {
-		printf("%d", Node->data);
-		if (Node->next)
+void printList(struct Node *head)
+{	struct Node *t = head;
+	while (t -> next!= head) {
+		printf("%d", t->data);
+		if (t -> next)
 			printf("->");
-		Node = Node->next;
+		t = t -> next;
 	}
+	printf("%d", t->data);
 	printf("\n");
 }
 
-// Driver program to test above function
 int main(void)
 {
 	struct Node* first = NULL;
@@ -103,19 +113,19 @@ int main(void)
 	}
 	
 
-printf("\nEnter second number\n");
-int k = 1;
-while(k){
-    int item_2;
-    printf("enter number\n");
-    scanf("%d", &item_2);
-	add_node(&second, item_2);
-    printf("\nEnter -1 to stop to 1 continue\n");
-	scanf("%d", &k);
-	if (k == -1){
-		break;
-	}
-}
+    printf("\nEnter second number\n");
+    int k = 1;
+    while(k){
+        int item_2;
+        printf("enter number\n");
+        scanf("%d", &item_2);
+	    add_node(&second, item_2);
+        printf("\nEnter -1 to stop to 1 continue\n");
+	    scanf("%d", &k);
+	    if (k == -1){
+		    break;
+	    }
+    }
 	printf("First List is: ");
 	printList(first);
 
@@ -123,7 +133,8 @@ while(k){
 	printList(second);
 
 	// Multiply the two lists and see result
-	printf("Result = %d",multint(first, second));
+	printf("Result = %ld",multint(first, second));
 
 	return 0;
 }
+
