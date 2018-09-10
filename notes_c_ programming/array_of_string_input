@@ -1,0 +1,21 @@
+# Assigning array of character to array of pointer not valid
+
+
+eg - 	char *pointers_to_string[100];
+
+     	char str[100];
+     	scanf("%s", str);
+	
+	pointer_to_string[0] = str; //NOT valid operation
+
+Instead we can do
+
+	int l = strlen(str);
+	char *c = (char *)malloc(l+1);
+	strcpy(c, str);
+	pointer_to_string[0] = c;
+
+Refer this for further clarification
+
+https://www.codingeek.com/tutorials/c-programming/array-of-pointers-to-stringc-programming-language/
+
