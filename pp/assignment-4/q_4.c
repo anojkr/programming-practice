@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void caculate_hash(int p[26], char a[100]){
+void calculate_hash(int p[26], char a[100]){
 
 	for (int i = 0; i < 20; i++){
 
@@ -49,11 +49,13 @@ void main(){
 
 		char str[100];
 		scanf("%s",str);
-		caculate_hash(hash_table, str);
+		calculate_hash(hash_table, str);
+
+		print_ll(hash_table);
 		n--;
+
 	}
 	
-	print_ll(hash_table);
 
 
 }
