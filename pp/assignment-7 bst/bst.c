@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -59,11 +58,7 @@ void inorder(struct node *root){
 	
 	if (root == NULL){
 		return;
-	}
-	
-//	if (root->parent != NULL){
-		//printf("\nParent = %d\n", root->parent->data);
-//	}
+	}	
 	
 	inorder(root -> left);
 	printf("%d ", root -> data);
@@ -76,9 +71,6 @@ void preorder(struct node *root){
 		return;
 	}
 	
-//	if (root->parent != NULL){
-		//printf("\nParent = %d\n", root->parent->data);
-//	}
 	printf("%d ", root -> data);
 	preorder(root -> left);
 	preorder(root -> right);
@@ -134,6 +126,30 @@ void count_leaves(struct node *root, int *count, int *sum){
 		
 }
 
+void level_traversal(struct node *t, int level, int *sum){
+	if (t == NULL){
+		return;
+	}
+	if (level == 1){
+		printf("%d ",t->data);
+		*sum = *sum + t -> data;
+	}
+	level_traversal(t->left, level-1, sum);
+	level_traversal(t->right, level-1, sum);
+}
+
+void level_order(struct node * root, int n){
+	for (int l = 0; l < n; l++){
+	
+		int sum = 0;
+		level_traversal(root, l, &sum);
+		if (sum != 0){
+			printf("\n Level order sum = %d\n", sum);
+		}
+	}
+	
+}
+
 
 void main(){
 	struct node *root = NULL;
@@ -145,13 +161,15 @@ void main(){
 	root  = get_node(data);
 	
 	bst(root, (n-1));
-	printf("\n");
+	printf("\nInorder\n");
 	inorder(root);
 
-	printf("\n");
+	printf("\nPeorder\n");
 	preorder(root);
 
-	printf("\n");
+	printf("\nLevel Order\n");	
+	level_order(root, n);
+/*
 //	search_operation(root);
 //	printf("\ncheck\n");
 
@@ -159,4 +177,6 @@ void main(){
 	int sum = 0;
 	count_leaves(root, &count, &sum);
 	printf("\n Leaves in Tree = %d\n Sum of leaves node = %d", count, sum);
+*/
+
 }
