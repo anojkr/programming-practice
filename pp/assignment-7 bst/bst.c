@@ -55,18 +55,33 @@ struct node * bst(struct node *root, int n){
 
 }
 
-void print_ll(struct node *root){
+void inorder(struct node *root){
 	
 	if (root == NULL){
 		return;
 	}
 	
-	if (root->parent != NULL){
+//	if (root->parent != NULL){
 		//printf("\nParent = %d\n", root->parent->data);
-	}
+//	}
+	
+	inorder(root -> left);
 	printf("%d ", root -> data);
-	print_ll(root -> left);
-	print_ll(root -> right);
+	inorder(root -> right);
+}
+
+void preorder(struct node *root){
+	
+	if (root == NULL){
+		return;
+	}
+	
+//	if (root->parent != NULL){
+		//printf("\nParent = %d\n", root->parent->data);
+//	}
+	printf("%d ", root -> data);
+	preorder(root -> left);
+	preorder(root -> right);
 }
 
 struct node * search_node(struct node *root, int data){
@@ -102,25 +117,23 @@ void search_operation(struct node *root){
 }
 
 
-int count_leaves(struct node *root){
+void count_leaves(struct node *root, int *count, int *sum){
 
 	if (root == NULL){
-		return 0;
+		return;
 	}	
 
 	if (root -> left == NULL && root -> right == NULL){
-		return 1;
+		//printf("\nleaf node %d\n", root->data);
+		*count = *count + 1;
+		*sum = *sum + root -> data;
 	}
 
-	else {
-		int l = 	count_leaves(root -> left); 
-		int r =		count_leaves(root -> right); 
+	count_leaves(root -> left, count, sum); 
+	count_leaves(root -> right, count, sum); 
 		
-		printf("left =%d \n", l);
-		printf("right = %d\n", r);
-		return ( l + r );
-	}
 }
+
 
 void main(){
 	struct node *root = NULL;
@@ -133,10 +146,17 @@ void main(){
 	
 	bst(root, (n-1));
 	printf("\n");
-	print_ll(root);
+	inorder(root);
+
+	printf("\n");
+	preorder(root);
+
 	printf("\n");
 //	search_operation(root);
-	printf("\ncheck\n");
-	int no_of_leaves = count_leaves(root);
-	printf("\n Leaves in Tree = %d\n", no_of_leaves);
+//	printf("\ncheck\n");
+
+	int count =0;
+	int sum = 0;
+	count_leaves(root, &count, &sum);
+	printf("\n Leaves in Tree = %d\n Sum of leaves node = %d", count, sum);
 }
