@@ -67,6 +67,20 @@ void preorder(struct node *t){
 }
 
 
+void mirror_bst(struct node *t){
+	if (t == NULL){
+		return;
+	}
+
+	mirror_bst(t -> right);
+	mirror_bst(t -> left);
+	struct node *k = NULL;
+	k = t -> left;
+	t -> left = t -> right;
+	t -> right = k;
+
+}
+
 
 void main(){
 	struct node *root = NULL;
@@ -79,5 +93,11 @@ void main(){
 	bst(root, (n-1));
 	printf("\nInorder\n");
 	preorder(root);
+	mirror_bst(root);
+	printf("\n");
+	preorder(root);
+
+
+
 
 }

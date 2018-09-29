@@ -45,24 +45,26 @@ struct node *insert_node(struct node *root, int data){
 
 }
 
-struct node * bst(struct node *root, int n){
+struct node * bst(struct node **root, int n){
 
 	for (int i = 0; i < n; i++){
 		int data;
 		scanf("%d", &data);
-		insert_node(root, data);
+		*root = insert_node(*root, data);
 	}
 
 }
 
-void preorder(struct node *t){
+void preorder(struct node *t, int level){
 	
 	if (t == NULL){
 		return;
 	}
-	printf("%d ", t->data );
-	preorder(t->left);
-	preorder(t->right);
+	if (level == 1){
+		printf("%d ", t->data );
+	}
+	preorder(t->left, level-1);
+	preorder(t->right, level-1);
 
 }
 
@@ -70,14 +72,14 @@ void preorder(struct node *t){
 
 void main(){
 	struct node *root = NULL;
-	scanf(" %d", &n);
+	scanf("%d", &n);
+
+	int level;
+	scanf("%d", &level);
 	
-	int data;
-	scanf(" %d", &data);
-	root  = get_node(data);
-	
-	bst(root, (n-1));
+	bst(&root, (n));
+
 	printf("\nInorder\n");
-	preorder(root);
+	preorder(root, level);
 
 }
