@@ -186,23 +186,6 @@ void path_to_leaves(struct node *root, struct STACK *stack){
 }
 
 
-void all_ancestor_node(struct node * root, int item){
-	struct node *t = search(root, item);
-	printf("\nAll Ancestor Node \n");
-
-	if (t == NULL){
-		return;
-
-	}
-	while(t -> parent != NULL){
-			printf("%d ", t -> parent -> data );
-			t = t -> parent;
-	}
-
-	printf("\n");
-
-}
-
 void mirror_tree(struct node *root){
 	struct node *t = root;
 	if (t == NULL){

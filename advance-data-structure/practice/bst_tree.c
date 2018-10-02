@@ -32,7 +32,7 @@ struct node * bst_tree( struct node * root, int item){
 			root -> right = bst_tree(root -> right, item);
 		}
 
-		return root;
+		//return root;
 
 }
 
@@ -69,6 +69,14 @@ void postorder( struct node *t){
 
 }
 
+void preorder_stack( struct node *t, int n){
+	stack[n];
+
+	
+
+
+}
+
 void main(){
 	struct node *root = newnode(1);
 
@@ -81,12 +89,6 @@ void main(){
 		bst_tree(root, item);
 		
 	}
-	printf("\n");
-	inorder(root);
-	printf("\n");
-	preorder(root);
-	printf("\n");
-	postorder(root);
-	printf("\n");
+
 
 }

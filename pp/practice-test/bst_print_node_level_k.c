@@ -51,6 +51,7 @@ struct node * bst(struct node **root, int n){
 		int data;
 		scanf("%d", &data);
 		*root = insert_node(*root, data);
+		printf("\n%d\n", (*root) -> data );
 	}
 
 }
@@ -74,12 +75,14 @@ void main(){
 	struct node *root = NULL;
 	scanf("%d", &n);
 
-	int level;
-	scanf("%d", &level);
 	
 	bst(&root, (n));
 
-	printf("\nInorder\n");
-	preorder(root, level);
+
+	int level;
+	scanf("%d", &level);
+
+//	printf("\nInorder\n");
+//	preorder(root, level);
 
 }

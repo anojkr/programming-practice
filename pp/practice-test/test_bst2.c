@@ -112,6 +112,7 @@ void level_order(struct node *root, int level){
 void level_operation(struct node *root, int n){
 	struct node *t = root;
 	for (int i = 0;  i < n; i++){
+		printf("\n");
 		level_order(t, i);
 	}
 
@@ -137,55 +138,69 @@ int print_inorder_succ_pre(struct node *root, int item, int n){
 	return num;
 }
 
-// void delete_node(struct node *root, int item, int n){
-// 	struct node *t = root;
-// 	if (t == NULL){
-// 		return;
-// 	}
 
-// 	struct node *k = search(root, item);
-// 	int inorder_prede  = print_inorder_succ_pre(root, item, n);
-// 	k -> data = inorder_prede;
-// 	struct node * m = search(root, inorder_prede);
+
+int delete_opeartion(struct node *k, struct node *root){
+
+	struct node *temp  = NULL;
 	
+	if (k -> l == NULL && k -> r == NULL){
+		if (root != NULL){
+			root -> data = k -> data;	
+		}
+		if (k -> parent -> r -> data == k -> data){
+			k -> parent -> r = NULL;
+			return 1;
+		}
+		else {
+			k -> parent -> l = NULL;
+			return 1;
+		}
+	}
 
-// 	if (m -> l == NULL && m -> r == NULL){
-// 		m -> parent -> r = NULL;
-// 	}
+ 	if (k -> r == NULL & k -> l != NULL){
+ 		 	if (root != NULL){
+ 		 		root -> data = k -> data;
+ 		 	}
+			k -> parent -> l = k -> l;
+			return 1;
 
-// 	if (m -> l != NULL & m -> r == NULL){
-// 		m -> parent -> r = m -> l;
-// 	}
+	}
 
-	
+	if (k -> l == NULL && k -> r != NULL){
+			if (root != NULL){
+ 		 		root -> data = k -> data;
+ 		 	}
+			k -> parent -> r = k -> r;
+			return 1;
+	}
 
-// }
+	return 0;
 
-void delete_node(struct node *root, int item, int n){
+}
+
+void delete_node(struct node *root, int item){
+
 	struct node *t = root;
 	if (t == NULL){
 		return;
 	}
 
 	struct node *k = search(root, item);
-	struct node *temp = k -> l;
+	//printf("\nDATA FOUND INSIDE = %d\n",k -> data );
+	struct node *temp = NULL;
 
-	while (temp -> r != NULL){
-		temp = temp -> r;
+	delete_opeartion(k, NULL);
+
+	if (k -> l != NULL && k -> r != NULL){
+			temp = k -> l;
+
+			while (temp -> r != NULL){
+				temp = temp -> r;
+			}
+
+			int m = delete_opeartion(temp, k);
 	}
-
-	k -> data = temp -> data;
-
-	if (temp -> l != NULL){
-		temp -> parent -> r = temp -> l;
-	}
-
-	if (temp -> l == NULL  && temp -> r == NULL){
-
-		temp -> parent -> l = NULL;
-	}
-	
-
 }
 
 void all_ancestor_node(struct node * root, int item){
@@ -234,8 +249,8 @@ void main(){
 	}
 	
 
-	printf("\nInorder\n");
-	inorder(root);
+	// printf("\nInorder\n");
+	// inorder(root);
 
 	// printf("\n");
 	// int r;
@@ -260,7 +275,7 @@ void main(){
 	printf("\n");
 	int d;
 	scanf("%d", &d);
-	delete_node(root, d, n);
+	delete_node(root, d);
 
 	printf("\n");
 	level_operation(root, n);
