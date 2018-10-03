@@ -10,6 +10,11 @@ struct node {
 
 };
 
+struct queue {
+	int front;
+	int rear;
+	int a[100];
+};
 
 struct node * get_node(int item){
 	
@@ -155,22 +160,34 @@ void delete_node(struct node *root, int item){
 
 }
 
+
+void bfs(){
+
+}
+
 void main(){
 	struct node * root = NULL;
 	create_bst(&root);
 	printf("\n");
 	preorder(root);
 
-	int d;
-	scanf("%d", &d);
-	while(d){
-		int item;
-		scanf("%d", &item);
-		delete_node(root, item);
-		d--;
-	}
+	struct queue Q;
+	Q.front = -1;
+	Q.rear 	= -1;
 
-	preorder(root);
+	
+
+	// int d;
+	// scanf("%d", &d);
+	// while(d){
+	// 	int item;
+	// 	scanf("%d", &item);
+	// 	delete_node(root, item);
+	// 	d--;
+	// }
+
+//	preorder(root);
+
 }
 
 

@@ -78,72 +78,6 @@ void bst(struct node **root, int n){
 
 }
 
-void delete_opeartion(struct node *k, struct node * root){
-	struct node *t = k;
-	
-	if (t -> left == NULL && t -> right == NULL){
-		//printf("check-3\n");
-			if (root != NULL){
-				root -> data = t -> data;
-			}
-			if (t -> parent ->left != NULL){
-				if (t -> parent -> left -> data == t -> data){
-					t -> parent -> left = NULL;
-				}
-			}
-
-			if (t -> parent -> right != NULL){
-				if (t -> parent -> right -> data ==  t -> data){
-					t -> parent -> right = NULL;
-				}
-			}
-
-	}
-
-	if (t -> left == NULL && t -> right != NULL){
-		if (root != NULL ){
-			root -> data = t -> data;
-		}
-		t -> parent -> right = t -> right;
-		//printf("check-1\n");
-		return;
-	}
-
-	if (t -> right ==  NULL && t -> left != NULL){
-		if (root != NULL){
-			root -> data = t -> data;
-		}
-		t -> parent -> left = t -> left;
-		//printf("check-2\n");
-		return;
-	}
-
-	return;
-
-}
-
-void delete_node(struct node *root, int item){
-	struct node *t = search(root, item);
-
-	if (t == NULL){
-		return;
-	}
-
-	delete_opeartion(t, NULL);
-
-	if (t -> left != NULL && t-> right != NULL){
-		struct node *k = t -> right;
-
-		while (k-> left != NULL){
-			k = k -> left;
-		}
-		delete_opeartion(k , t);
-	}
-
-}
-
-
-
 void print_ll_preorder(struct node * root){
 
 	struct node *t = root;
@@ -168,11 +102,8 @@ void main(){
 	bst(&root, n);
 	print_ll_preorder(root);
 
-	int d;
-	scanf("%d", &d);
-	delete_node(root, d);
-	
-	printf("\n");
-	print_ll_preorder(root);
+	int item;
+	scanf("%d", &item);
+	search(root, item);
 
 }
