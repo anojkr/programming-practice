@@ -22,7 +22,6 @@ struct node * get_node(int item){
 
 }
 
-
 struct node * insert_node(struct node *root, int item){
 	
 	struct node *t = root;
@@ -78,32 +77,27 @@ void bst(struct node **root, int n){
 
 }
 
-void print_ll_preorder(struct node * root){
 
-	struct node *t = root;
+struct node *root = NULL
+void build_tree(int *in, int *post, start, end, int p){
 
-	if (t == NULL){
-		return;
+	if (start > end){
+		return
 	}
-
-	printf("%d ", t -> data );
-	print_ll_preorder(t -> left);
-	print_ll_preorder(t -> right);
+	
+	*root = insert_node(root, )
 
 }
 
+
 void main(){
-
-	struct node * root = NULL;
-
-	int n;
-	scanf("%d", &n);
-
-	bst(&root, n);
-	print_ll_preorder(root);
-
-	int item;
-	scanf("%d", &item);
-	search(root, item);
+    
+    int in[]={4,8,2,5,1,6,3,7};
+	int post[]={8,4,5,2,6,7,3,1};
+	int p = n-1;
+	int size = sizeof(in)/sizeof(in[0]);
+	int start = 0;
+	int end = SIZE-1;
+	build_tree(in, post, start, end, p)
 
 }

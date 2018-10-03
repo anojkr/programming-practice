@@ -118,7 +118,7 @@ void delete_opeartion(struct node *k, struct node * root){
 
 	}
 
-	if (t -> left == NULL && t -> right != NULL){
+3	if (t -> left == NULL && t -> right != NULL){
 		if (root != NULL ){
 			root -> data = t -> data;
 		}

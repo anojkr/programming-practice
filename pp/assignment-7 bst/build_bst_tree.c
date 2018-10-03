@@ -11,6 +11,7 @@ struct node {
 };
 
 struct node * get_node(int item){
+
 	struct node *t = (struct node *)malloc(sizeof(struct node));
 	
 	t -> data   = item;
@@ -171,7 +172,7 @@ void main(){
 	int d;
 	scanf("%d", &d);
 	delete_node(root, d);
-	
+
 	printf("\n");
 	print_ll_preorder(root);
 
