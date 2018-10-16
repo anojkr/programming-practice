@@ -55,10 +55,11 @@ void create_bst(struct node **root){
 
 	while (n){
 		char  t[100];
-		scanf("%s", t);
+		int item;
+		scanf("%d", &item);
 
 		int len = strlen(t);
-		*root = add_node(*root, len, t);
+		*root = add_node(*root, item, t);
 		n--;
 	}
 
