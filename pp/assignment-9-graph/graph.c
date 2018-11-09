@@ -28,6 +28,26 @@ struct node * get_node(char *s, char *d, int weight){
 }
 
 
+void insertionSort(int arr[], int n) 
+{ 
+   int i, key, j; 
+   for (i = 1; i < n; i++) 
+   { 
+       key = arr[i]; 
+       j = i-1; 
+  
+       /* Move elements of arr[0..i-1], that are 
+          greater than key, to one position ahead 
+          of their current position */
+       while (j >= 0 && arr[j] > key) 
+       { 
+           arr[j+1] = arr[j]; 
+           j = j-1; 
+       } 
+       arr[j+1] = key; 
+   } 
+} 
+
 void print_graph(struct graph *g){
 	for (int i = 0; i < 100; i++){
 		struct node *t = g -> list[i];
@@ -54,7 +74,7 @@ int hash_func(char *s){
 	return hash_value;
 }
 
-void add_edges_to_graph(struct graph *g, int V, int E, char type){
+void add_edges_to_graph(struct graph *g, int V, int E, char type, struct node *arr){
 
 	while (E){
 		char s[100];
@@ -73,6 +93,7 @@ void add_edges_to_graph(struct graph *g, int V, int E, char type){
 		if (t == NULL){
 
 			g -> list[index_value_s] = get_node(s, d, w);
+		
 
 		}
 
@@ -119,6 +140,8 @@ void main(){
 	g = &a;
 
 
+
+
 	for (int i = 0; i < 100; i++){
 		g -> list[i] =  NULL;
 	}
@@ -132,6 +155,19 @@ void main(){
 	g -> vertices = V;
 	g -> edges = E;
 
-	create_graph(g, V, E, 'u');
+	struct node sort_array[E];
+
+	create_graph(g, V, E, 'u', sort_array);
+
 	
 }
+
+// 5
+// 7
+// ALLAHABAD BANARAS 1
+// ALLAHABAD DELHI 5
+// ALLAHABAD CALCULT 4
+// BANARAS DELHI 2
+// BANARAS EAST 6
+// DELHI EAST 7
+// DELHI CALCULT 3
