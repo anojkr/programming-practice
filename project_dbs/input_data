@@ -1,0 +1,82 @@
+21 
+1 12 8 2 25 6 14 28 17 7 52 16 48 68 3 26 29 53 55 45 67
+
+false
+8 17 48 
+
+true
+1 2 3 6 7 
+
+
+true
+12 14 16 
+
+
+true
+25 26 28 29 45 
+
+
+true
+52 53 55 67 68 
+----------------------------------------------------
+
+6
+1 12 2 8 6 25
+
+-----------------------------
+
+6
+1 12 8 2 25 6
+
+-------------------------------
+
+6
+1 18 M ANOJ
+12 19 F SANIA
+8 20 M VINOD
+2 21 F RANI
+25 48 M SHIV
+6 15 F RENU
+
+----------------------------
+
+6
+1 18 M ANOJ
+2 19 F SANIA
+3 20 M VINOD
+4 21 F RANI
+5 48 M SHIV
+6 15 F RENU
+
+-----------------------------------
+
+21 
+1 18 M ANOJ
+12 19 F VINOD
+8 20 M PARMOD
+2 21 F MANOJ
+25 22 M RAMU
+21 
+1 18 M ANOJ
+12 19 F VINOD
+8 20 M PARMOD
+2 21 F MANOJ
+25 22 M RAMU
+6 23 F SHIV
+14 24 M SAROJ
+28 25 F AJAY
+17 26 M ABHAY
+7 27 F RAVI
+52 28 M NEERAJ
+16 29 F ANIL
+48 30 M ARUN
+68 31 F ARPIT
+3 32 M CHERTI
+26 33 F TARUN
+29 34 M AMIT
+53 35 F REETU	 
+55 36 M RAMAN
+45 37 F ROHAN
+67 38 M KARTIK
+
+
